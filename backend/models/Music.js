@@ -30,7 +30,7 @@ const SingerSchema = new Schema({
         required: true,
     },
     albums: [AlbumSchema],
-});
+}, {collection: 'search-data'});
 
 const Music = mongoose.model('Music', SingerSchema);
 

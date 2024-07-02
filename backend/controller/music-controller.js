@@ -10,6 +10,7 @@ const getMusicData = async(req, res) => {
     }}
 
 const searchMusicData = async(req, res) => {
+    const query = req.query.q;
     try {
         const music = await Music.find({
             $or: [
@@ -18,7 +19,7 @@ const searchMusicData = async(req, res) => {
                 {'albums.songs.title': new RegExp(query, 'i')},
             ]
         }).exec();
-        res.json(music)
+        res.json(music);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).send('Internal Server Error');
