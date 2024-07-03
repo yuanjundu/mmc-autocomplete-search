@@ -4,21 +4,22 @@ import { IoIosSearch } from "react-icons/io";
 
 const Search = () => {
     const [query, setQuery] = useState('');
-    const [suggestions, setSuggestions] = useState([]);
+    const [results, setResults] = useState([]);
 
     useEffect(() => {
         if(query.length > 0) {
-            console.log(query);
+            console.log("Query:", query);
             axios.get(`${process.env.REACT_APP_API_URL}/api/searchData?q=${query}`)
             .then(response => {
-                setSuggestions(response.data);
+                setResults(response.data.data);
+                console.log(response.data);
             })
             .catch(error => {
-                console.error("Error in search suggestions:", error);
+                console.error("Error in search results:", error);
             });
         }
         else {
-            setSuggestions([]);
+            setResults([]);
         }
     }, [query]);
 
@@ -37,19 +38,9 @@ const Search = () => {
             <div className="suggestionsList">
                  <ul>
                     <li>{query}</li>
-                    {suggestions.map(singer => (
-                        <li key={singer._id}>
-                            {singer.name}
-                            {singer.albums.map(album => (
-                                <div key={album._id}>
-                                    {album.title}
-                                    <ul>
-                                        {album.songs.map(song => (
-                                            <li key={song._id}>{song.title}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))}
+                    {results.map((result, index) => (
+                        <li key={index}>
+                            {result.type}: {result.value}
                         </li>
                     ))}
                  </ul>
