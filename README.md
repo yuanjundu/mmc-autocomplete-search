@@ -25,6 +25,7 @@ npm (v6 or later)
 
 ### Start the Frontend Development Server
 Open another terminal and run the following code:
+
     cd frontend
     npm install
     npm start
