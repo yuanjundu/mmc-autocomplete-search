@@ -10,11 +10,14 @@ import SearchOffIcon from '@mui/icons-material/SearchOff';
 const Search = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
+    const {
+        REACT_APP_API_URL
+    }=process.env
 
     useEffect(() => {
         if(query.length > 0) {
             console.log("Query:", query);
-            axios.get(`${process.env.REACT_APP_API_URL}/api/searchData?q=${query}`)
+            axios.get(`${REACT_APP_API_URL}/api/searchData?q=${query}`)
             .then(response => {
                 setResults(response.data.data);
                 console.log(response.data);

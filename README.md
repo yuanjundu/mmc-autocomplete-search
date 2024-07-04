@@ -1,5 +1,5 @@
 # mmc-autocomplete-search
-This project implements an autocomplete search component for artists, albums, or songs. The frontend is built using React.js and Material-UI, and the backend uses Node.js with a MongoDB Atlas database. The application supports responsive design to provide a seamless experience across different screen sizes.
+This project implements an autocomplete search component for artists, albums, or songs. The frontend is built using React.js and Material-UI, and the backend uses Node.js with a MongoDB Atlas database. The application supports responsive design to provide a seamless experience across different screen sizes. This application has been containerized using Docker.
 
 ## Features
  - Autocomplete search for singers, albums, and songs
