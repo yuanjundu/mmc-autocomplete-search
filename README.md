@@ -18,13 +18,12 @@ There are .env.example files in both the backend and frontend directories. Pleas
 ### Run with Docker
 After creating the .env files, run
     docker-compose up
-Then open [http](http://localhost:3000) in the browser.
+Then open http://localhost:3000 in the browser.
 
 ### Run without Docker
 ### Prerequisites
-Node.js (v12 or later)
-
-npm (v6 or later)
+- Node.js (v12 or later)
+- npm (v6 or later)
 
 ### Start the Backend Server
     cd backend
