@@ -8,15 +8,23 @@ This project implements an autocomplete search component for artists, albums, or
  - Give no result found information when there is no matched data in database
  - Responsive design for seamless experience on different screen sizes
 
-## Installation
+## Installation and running
+### Clone the Repository
+    git clone git@github.com:yuanjundu/mmc-autocomplete-search.git
+
+### Add .env file 
+There are .env.example files in both the backend and frontend directories. Please create .env files in the root directories of both the backend and frontend, using the respective .env.example files as references.
+
+### Run with Docker
+After creating the .env files, run
+    docker-compose up
+Then open [http](http://localhost:3000) in the browser.
+
+### Run without Docker
 ### Prerequisites
 Node.js (v12 or later)
 
 npm (v6 or later)
-
-### Clone the Repository
-    git clone git@github.com:yuanjundu/mmc-autocomplete-search.git
-    cd mmc-autocomplete-search
 
 ### Start the Backend Server
     cd backend
@@ -32,7 +40,6 @@ Open another terminal and run the following code:
 The application will start on http://localhost:3000.
 
 ## Usage
-### Running the application
 - Make sure you are running the backend server
 - Open your web browser and navigate to http://localhost:3000.
 - Type a artist, album, or song name in the search input line
