@@ -24,12 +24,12 @@ const searchMusicData = async(req, res) => {
 
             singer.albums.forEach(album => {
                 if(regex.test(album.title)) {
-                    acc.push({type: 'album', value: album.title});
+                    acc.push({type: 'album', value: album.title, singer: singer.name});
                 }
 
                 album.songs.forEach(song => {
                     if(regex.test(song.title)) {
-                        acc.push({type: 'song', value: song.title});
+                        acc.push({type: 'song', value: song.title, singer: singer.name, album: album.title});
                     }
                 });
             });
