@@ -18,16 +18,15 @@ npm (v6 or later)
     git clone git@github.com:yuanjundu/mmc-autocomplete-search.git
     cd mmc-autocomplete-search
 
-### Install Dependencies
-    npm install
-
 ### Start the Backend Server
     cd backend
+    npm install
     node server.js
 
 ### Start the Frontend Development Server
 Open another terminal and run the following code:
     cd frontend
+    npm install
     npm start
 The application will start on http://localhost:3000.
 
