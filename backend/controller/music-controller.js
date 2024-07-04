@@ -19,17 +19,17 @@ const searchMusicData = async(req, res) => {
 
         const results = music.reduce((acc, singer) => {
             if(regex.test(singer.name)){
-                acc.push({type: 'singer', value: singer.name});
+                acc.push({type: 'Artist', value: singer.name});
             }
 
             singer.albums.forEach(album => {
                 if(regex.test(album.title)) {
-                    acc.push({type: 'album', value: album.title, singer: singer.name});
+                    acc.push({type: 'Album', value: album.title, singer: singer.name});
                 }
 
                 album.songs.forEach(song => {
                     if(regex.test(song.title)) {
-                        acc.push({type: 'song', value: song.title, singer: singer.name, album: album.title});
+                        acc.push({type: 'Song', value: song.title, singer: singer.name, album: album.title});
                     }
                 });
             });
@@ -38,7 +38,12 @@ const searchMusicData = async(req, res) => {
 
         console.log("Results found:", results);
 
-        res.json({data: results});
+        if (results.length === 0) {
+            return res.json({ message: "No results found" });
+        } else {
+            return res.json({ data: results });
+        }
+        
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).send('Internal Server Error');

@@ -4,7 +4,8 @@ import { IoIosSearch } from "react-icons/io";
 import './Search.css';
 import Input from "@mui/material/Input";
 import List from '@mui/material/List';
-import { ListItemText, ListSubheader } from "@mui/material";
+import { ListItemText, ListSubheader, Box } from "@mui/material";
+import SearchOffIcon from '@mui/icons-material/SearchOff';
 
 const Search = () => {
     const [query, setQuery] = useState('');
@@ -30,23 +31,24 @@ const Search = () => {
 
 
     return (
-        <div className="search-container">
-            <Input label="Search for singers, albums or songs..." className="search-field" variant="outlined"
+        <Box className="search-container">
+            <Input label="Search for artists, albums or songs..." className="search-field" variant="outlined"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                placeholder="Search for singers, albums or songs..."
+                placeholder="Search for artists, albums or songs..."
                 sx={{':after': { borderBottomColor: 'darksalmon' }}}
             />
 
             {query && 
-            <div className="results">
+            <Box className="results">
                 <List className="results-list">
                     <ListItemText className="input-query">
                         <IoIosSearch className="icon"/>
                         {query}
                     </ListItemText>
-                    {results.map((result, index) => (
-                            <ListItemText key={index} className="result-items">
+                    {results && results.length > 0 ? (results.map((result, index) => (
+                            <ListItemText key={index} className="result-items"
+                            sx={{marginBottom: "0", marginTop: "0"}}>
                                 {result.value}
                                 <div>
                                     <span className="details">{result.type}</span>
@@ -54,10 +56,17 @@ const Search = () => {
                                     {result.album && <span className="details"> · {result.album}</span>}
                                 </div>
                             </ListItemText>
-                        ))}
+                        ))):(
+                            <ListItemText className="result-items"
+                            sx={{color: "grey", alignItems: "center"}}>
+                                <Box sx={{display: "flex"}}>
+                                    <SearchOffIcon />Results not found
+                                </Box>
+                            </ListItemText>
+                        )}
                 </List>
-            </div>}
-        </div>
+            </Box>}
+        </Box>
     )
 }
 
